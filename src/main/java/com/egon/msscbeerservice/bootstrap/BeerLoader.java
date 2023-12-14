@@ -1,6 +1,6 @@
 package com.egon.msscbeerservice.bootstrap;
 
-import com.egon.msscbeerservice.beer.entities.Beer;
+import com.egon.msscbeerservice.beer.entities.BeerEntity;
 import com.egon.msscbeerservice.beer.repositories.BeerRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,7 +22,7 @@ public class BeerLoader implements CommandLineRunner {
         if (beerRepository.count() != 0) return;
 
         beerRepository.save(
-                Beer.builder()
+                BeerEntity.builder()
                         .name("Mango Bobs")
                         .style("IPA")
                         .quantityToBrew(200)
@@ -31,7 +31,7 @@ public class BeerLoader implements CommandLineRunner {
                         .price(new BigDecimal("12.95"))
                         .build());
         beerRepository.save(
-                Beer.builder()
+                BeerEntity.builder()
                         .name("Galaxy Cat")
                         .style("PALE_ALE")
                         .quantityToBrew(200)

@@ -3,7 +3,6 @@ package com.egon.msscbeerservice.beer.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
@@ -17,7 +16,7 @@ import java.util.UUID;
 @Builder
 @Entity
 @Table(name = "tb_beer")
-public class Beer {
+public class BeerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(length = 36, updatable = false, nullable = false)

@@ -1,18 +1,14 @@
 package com.egon.msscbeerservice.beer.helpers;
 
 import com.egon.msscbeerservice.beer.dtos.BeerDto;
-import com.egon.msscbeerservice.beer.enums.BeerStyleEnum;
+import lombok.experimental.UtilityClass;
 
-import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.UUID;
 
-public class BeerDtoHelper {
-  public static final UUID ID = UUID.fromString("aeb60d96-6aa1-4c2e-a82b-1683a7439d47");
-  public static final String NAME = "Beer 1";
-  public static final BeerStyleEnum STYLE = BeerStyleEnum.ALE;
-  public static final long UPC = 123L;
-  public static final BigDecimal PRICE = BigDecimal.valueOf(10.90);
-
+@UtilityClass
+public class BeerDtoHelper extends BeerHelper {
   public static BeerDto create() {
     return beerDtoBuilder().build();
   }
@@ -35,8 +31,8 @@ public class BeerDtoHelper {
         .name(NAME)
         .style(STYLE)
         .upc(UPC)
-        .price(PRICE);
-
-
+        .price(PRICE)
+        .createdAt(OffsetDateTime.of(CREATED_AT, ZoneOffset.UTC))
+        .updatedAt(OffsetDateTime.of(UPDATED_AT, ZoneOffset.UTC));
   }
 }

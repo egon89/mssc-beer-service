@@ -38,5 +38,5 @@ public class BeerDto {
 
   private OffsetDateTime updatedAt;
 
-  private Integer version;
+  private Long version;
 }

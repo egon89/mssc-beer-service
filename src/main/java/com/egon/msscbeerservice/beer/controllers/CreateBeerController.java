@@ -2,6 +2,7 @@ package com.egon.msscbeerservice.beer.controllers;
 
 import com.egon.msscbeerservice.beer.dtos.BeerDto;
 import com.egon.msscbeerservice.beer.services.CreateBeerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class CreateBeerController {
   private final CreateBeerService createBeerService;
 
   @PostMapping
-  public ResponseEntity<Void> createBeer(@RequestBody BeerDto beerDto) {
+  public ResponseEntity<Void> createBeer(@Valid @RequestBody BeerDto beerDto) {
     var beerCreatedDto = createBeerService.execute(beerDto);
 
     // TODO add domain

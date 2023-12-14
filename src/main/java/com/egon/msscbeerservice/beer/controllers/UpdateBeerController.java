@@ -2,6 +2,7 @@ package com.egon.msscbeerservice.beer.controllers;
 
 import com.egon.msscbeerservice.beer.dtos.BeerDto;
 import com.egon.msscbeerservice.beer.services.UpdateBeerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class UpdateBeerController {
 
    @PutMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
-  public ResponseEntity<Void> updateBeer(@PathVariable UUID id, @RequestBody BeerDto beerDto) {
+  public ResponseEntity<Void> updateBeer(@PathVariable UUID id, @Valid @RequestBody BeerDto beerDto) {
     updateBeerService.execute(id, beerDto);
     return ResponseEntity.noContent().build();
   }

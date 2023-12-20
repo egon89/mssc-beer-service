@@ -14,6 +14,7 @@ import java.util.UUID;
 public class FindBeerByIdServiceImpl implements FindBeerByIdService {
 
   private final BeerRepository repository;
+
   private final BeerMapper mapper;
 
   @Override

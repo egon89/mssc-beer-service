@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class CreateBeerServiceImpl implements CreateBeerService {
 
   private final BeerRepository repository;
+
   private final BeerMapper mapper;
 
   @Override

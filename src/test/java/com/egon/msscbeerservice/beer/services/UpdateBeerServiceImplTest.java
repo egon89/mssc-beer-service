@@ -31,6 +31,7 @@ class UpdateBeerServiceImplTest {
   private BeerRepository repository;
 
   @Test
+  @SuppressWarnings("ConstantConditions")
   void shouldUpdateABeer() {
     val beerEntity = BeerEntityHelper.create();
     val updateBeerDto = BeerDto.builder()

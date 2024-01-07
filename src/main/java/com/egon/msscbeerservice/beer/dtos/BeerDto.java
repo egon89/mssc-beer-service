@@ -16,7 +16,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Builder(toBuilder = true)
 public class BeerDto {
   private UUID id;
 
@@ -33,6 +33,8 @@ public class BeerDto {
   @NotNull
   @Positive
   private Long upc;
+
+  private Integer quantityOnHand;
 
   private OffsetDateTime createdAt;
 

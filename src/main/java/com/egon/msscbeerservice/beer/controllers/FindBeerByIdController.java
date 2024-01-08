@@ -4,10 +4,7 @@ import com.egon.msscbeerservice.beer.dtos.BeerDto;
 import com.egon.msscbeerservice.beer.services.FindBeerByIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -19,7 +16,10 @@ public class FindBeerByIdController {
   private final FindBeerByIdService findBeerByIdService;
 
   @GetMapping("/{id}")
-  public ResponseEntity<BeerDto> findById(@PathVariable UUID id) {
-    return ResponseEntity.ok(findBeerByIdService.execute(id));
+  public ResponseEntity<BeerDto> findById(
+      @PathVariable UUID id,
+      @RequestParam(required = false, defaultValue = "false") Boolean showInventoryOnHand
+  ) {
+    return ResponseEntity.ok(findBeerByIdService.execute(id, showInventoryOnHand));
   }
 }

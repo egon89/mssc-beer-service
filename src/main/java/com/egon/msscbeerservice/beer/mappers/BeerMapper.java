@@ -11,4 +11,8 @@ import org.mapstruct.Mapper;
 public interface BeerMapper {
   BeerDto toDto(BeerEntity entity);
   BeerEntity toEntity(BeerDto dto);
+
+  default BeerDto toDto(BeerEntity entity, Boolean showInventoryOnHand) {
+    return toDto(entity);
+  }
 }

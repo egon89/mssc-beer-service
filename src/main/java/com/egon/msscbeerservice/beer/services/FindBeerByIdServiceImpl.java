@@ -18,9 +18,9 @@ public class FindBeerByIdServiceImpl implements FindBeerByIdService {
   private final BeerMapper mapper;
 
   @Override
-  public BeerDto execute(UUID id) {
+  public BeerDto execute(UUID id, Boolean showInventoryOnHand) {
     final var beerEntity = repository.findById(id).orElseThrow(NotFoundException::new);
 
-    return mapper.toDto(beerEntity);
+    return mapper.toDto(beerEntity, showInventoryOnHand);
   }
 }

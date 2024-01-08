@@ -5,5 +5,5 @@ import com.egon.msscbeerservice.beer.dtos.BeerDto;
 import java.util.UUID;
 
 public interface FindBeerByIdService {
-  BeerDto execute(UUID id);
+  BeerDto execute(UUID id, Boolean showInventoryOnHand);
 }

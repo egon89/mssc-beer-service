@@ -34,7 +34,7 @@ class FindBeerByIdServiceImplTest {
     expected.setVersion(1L);
     when(repository.findById(any())).thenReturn(Optional.of(beerEntity));
 
-    val result = service.execute(BeerHelper.ID);
+    val result = service.execute(BeerHelper.ID, Boolean.FALSE);
 
     assertThat(result).isNotNull();
     assertThat(result).isEqualTo(expected);
@@ -45,6 +45,6 @@ class FindBeerByIdServiceImplTest {
   void shouldThrowNotFoundExceptionWhenABeerNotExist() {
     when(repository.findById(any())).thenThrow(NotFoundException.class);
 
-    assertThrows(NotFoundException.class, () -> service.execute(BeerHelper.ID));
+    assertThrows(NotFoundException.class, () -> service.execute(BeerHelper.ID, Boolean.FALSE));
   }
 }

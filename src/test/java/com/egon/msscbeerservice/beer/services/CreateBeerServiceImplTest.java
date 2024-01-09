@@ -32,6 +32,9 @@ class CreateBeerServiceImplTest {
   @MockBean
   private BeerRepository repository;
 
+  @MockBean
+  private GetOnHandBeerInventoryService getOnHandBeerInventoryService;
+
   @Test
   void shouldCreateABeer() {
     when(repository.save(any())).thenReturn(BeerEntityHelper.create());

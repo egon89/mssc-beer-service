@@ -3,10 +3,12 @@ package com.egon.msscbeerservice.beer.mappers;
 import com.egon.msscbeerservice.beer.helpers.BeerDtoHelper;
 import com.egon.msscbeerservice.beer.helpers.BeerEntityHelper;
 import com.egon.msscbeerservice.beer.helpers.BeerHelper;
+import com.egon.msscbeerservice.beer.services.GetOnHandBeerInventoryService;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.sql.Timestamp;
 import java.time.OffsetDateTime;
@@ -19,6 +21,9 @@ class BeerMapperImplTest {
 
   @Autowired
   private BeerMapper mapper;
+
+  @MockBean
+  private GetOnHandBeerInventoryService getOnHandBeerInventoryService;
 
   @Test
   void toDto() {

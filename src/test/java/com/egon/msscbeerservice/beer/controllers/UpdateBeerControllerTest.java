@@ -2,6 +2,7 @@ package com.egon.msscbeerservice.beer.controllers;
 
 import com.egon.msscbeerservice.beer.dtos.BeerDto;
 import com.egon.msscbeerservice.beer.helpers.BeerDtoHelper;
+import com.egon.msscbeerservice.beer.services.GetOnHandBeerInventoryService;
 import com.egon.msscbeerservice.beer.services.UpdateBeerService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -16,8 +17,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -25,6 +27,9 @@ class UpdateBeerControllerTest {
 
   @MockBean
   UpdateBeerService service;
+
+  @MockBean
+  private GetOnHandBeerInventoryService getOnHandBeerInventoryService;
 
   @Autowired
   MockMvc mockMvc;

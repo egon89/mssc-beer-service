@@ -30,6 +30,9 @@ class UpdateBeerServiceImplTest {
   @MockBean
   private BeerRepository repository;
 
+  @MockBean
+  private GetOnHandBeerInventoryService getOnHandBeerInventoryService;
+
   @Test
   @SuppressWarnings("ConstantConditions")
   void shouldUpdateABeer() {

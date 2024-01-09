@@ -27,6 +27,9 @@ class FindBeerByIdServiceImplTest {
   @MockBean
   private BeerRepository repository;
 
+  @MockBean
+  private GetOnHandBeerInventoryService getOnHandBeerInventoryService;
+
   @Test
   void shouldFindABeerById() {
     val beerEntity = BeerEntityHelper.create();

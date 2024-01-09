@@ -19,6 +19,9 @@ class DeleteBeerServiceImplTest {
   @MockBean
   private BeerRepository repository;
 
+  @MockBean
+  private GetOnHandBeerInventoryService getOnHandBeerInventoryService;
+
   @Test
   void shouldDeleteABeer() {
     doNothing().when(repository).deleteById(any());

@@ -17,4 +17,6 @@ public class ListBeerFilterRequestDto {
   private String name;
 
   private BeerStyleEnum style;
+
+  private Boolean showInventoryOnHand = false;
 }

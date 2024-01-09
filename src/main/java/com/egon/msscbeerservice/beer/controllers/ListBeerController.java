@@ -26,7 +26,8 @@ public class ListBeerController {
     log.debug("list beers");
     var beerPage = service.execute(
         ListBeerFilterDto.create(filter.getName(), filter.getStyle()),
-        PageRequest.of(filter.getPageNumber(), filter.getPageSize()));
+        PageRequest.of(filter.getPageNumber(), filter.getPageSize()),
+        filter.getShowInventoryOnHand());
 
     return ResponseEntity.ok(beerPage);
   }

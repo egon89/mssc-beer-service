@@ -18,11 +18,11 @@ public class ListBeerServiceImpl implements ListBeerService {
   private final BeerMapper mapper;
 
   @Override
-  public BeerPagedListDto execute(ListBeerFilterDto filter, PageRequest pageRequest) {
-    var page = repository.findAll(BeerSpecificationUtil.byFilter(filter), pageRequest);
+  public BeerPagedListDto execute(ListBeerFilterDto filter, PageRequest pageRequest, Boolean showInventoryOnHand) {
+    final var page = repository.findAll(BeerSpecificationUtil.byFilter(filter), pageRequest);
 
     return new BeerPagedListDto(
-        page.getContent().stream().map(mapper::toDto).toList(),
+        page.getContent().stream().map(beerEntity -> mapper.toDto(beerEntity, showInventoryOnHand)).toList(),
         PageRequest.of(page.getPageable().getPageNumber(), page.getPageable().getPageSize()),
         page.getTotalElements());
   }

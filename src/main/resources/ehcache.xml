@@ -5,7 +5,7 @@
         <jsr107:defaults enable-management="true" enable-statistics="true"/>
     </service>
 
-    <cache alias="BeerByIdCache" uses-template="config-cache"/>
+    <cache alias="beerCache" uses-template="config-cache"/>
 
     <cache-template name="config-cache">
         <expiry>

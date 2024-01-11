@@ -20,7 +20,7 @@ public class FindBeerByIdServiceImpl implements FindBeerByIdService {
 
   private final BeerMapper mapper;
 
-  @Cacheable(cacheNames = "beerCache", key = "#id", condition = "#showInventoryOnHand == false ")
+  @Cacheable(cacheNames = "findBeerByIdCache", key = "#id", condition = "#showInventoryOnHand == false ")
   @Override
   public BeerDto execute(UUID id, Boolean showInventoryOnHand) {
     log.debug("called find beer by id for id %s".formatted(id.toString()));

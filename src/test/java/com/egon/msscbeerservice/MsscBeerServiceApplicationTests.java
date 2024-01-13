@@ -25,7 +25,8 @@ class MsscBeerServiceApplicationTests {
 	public static class CachingTestConfig {
 		@Bean
 		public CacheManager cacheManager() {
-			return new ConcurrentMapCacheManager("findBeerByIdCache", "listBeerCache");
+			return new ConcurrentMapCacheManager(
+					"findBeerByIdCache", "listBeerCache", "findBeerByUpcCache");
 		}
 	}
 

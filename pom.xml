@@ -34,5 +34,9 @@
 			<classifier>jakarta</classifier>
 			<version>${ehcache.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-artemis</artifactId>
+		</dependency>
 	</dependencies>
 </project>

@@ -1,7 +1,9 @@
 package com.egon.msscbeerservice;
 
 import com.egon.msscbeerservice.beer.services.GetOnHandBeerInventoryService;
+import jakarta.jms.ConnectionFactory;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.cache.CacheManager;
@@ -30,4 +32,11 @@ class MsscBeerServiceApplicationTests {
 		}
 	}
 
+	@Configuration
+	public static class JMSTestConfig {
+		@Bean
+		public ConnectionFactory connectionFactory() {
+			return Mockito.mock(ConnectionFactory.class);
+		}
+	}
 }

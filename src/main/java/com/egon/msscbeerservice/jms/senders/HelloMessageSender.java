@@ -1,7 +1,7 @@
 package com.egon.msscbeerservice.jms.senders;
 
-import com.egon.msscbeerservice.jms.dtos.HelloMessageDto;
 import com.egon.msscbeerservice.config.JmsConfig;
+import com.egon.msscbeerservice.jms.dtos.HelloMessageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

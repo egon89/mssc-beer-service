@@ -1,4 +1,4 @@
-package com.egon.msscbeerservice.beer.services;
+package com.egon.msscbeerservice.beer.services.impl;
 
 import com.egon.msscbeerservice.beer.dtos.BeerDto;
 import com.egon.msscbeerservice.beer.enums.BeerStyleEnum;
@@ -6,6 +6,8 @@ import com.egon.msscbeerservice.beer.helpers.BeerDtoHelper;
 import com.egon.msscbeerservice.beer.helpers.BeerEntityHelper;
 import com.egon.msscbeerservice.beer.helpers.BeerHelper;
 import com.egon.msscbeerservice.beer.repositories.BeerRepository;
+import com.egon.msscbeerservice.beer.services.GetOnHandBeerInventoryService;
+import com.egon.msscbeerservice.beer.services.impl.UpdateBeerServiceImpl;
 import com.egon.msscbeerservice.shared.exceptions.NotFoundException;
 import lombok.val;
 import org.junit.jupiter.api.Test;

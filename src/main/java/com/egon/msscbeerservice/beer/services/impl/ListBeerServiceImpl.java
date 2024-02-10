@@ -1,10 +1,11 @@
-package com.egon.msscbeerservice.beer.services;
+package com.egon.msscbeerservice.beer.services.impl;
 
 import com.egon.msscbeerservice.beer.dtos.BeerPagedListDto;
 import com.egon.msscbeerservice.beer.dtos.ListBeerFilterDto;
 import com.egon.msscbeerservice.beer.mappers.BeerMapper;
 import com.egon.msscbeerservice.beer.repositories.BeerRepository;
 import com.egon.msscbeerservice.beer.repositories.specifications.BeerSpecificationUtil;
+import com.egon.msscbeerservice.beer.services.ListBeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;

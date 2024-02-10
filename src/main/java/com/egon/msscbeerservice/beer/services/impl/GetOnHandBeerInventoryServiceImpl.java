@@ -1,6 +1,7 @@
-package com.egon.msscbeerservice.beer.services;
+package com.egon.msscbeerservice.beer.services.impl;
 
 import com.egon.msscbeerservice.beer.dtos.response.BeerInventoryIntegrationResponseDto;
+import com.egon.msscbeerservice.beer.services.GetOnHandBeerInventoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

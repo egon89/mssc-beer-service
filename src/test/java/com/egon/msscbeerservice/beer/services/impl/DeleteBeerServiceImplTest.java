@@ -1,7 +1,9 @@
-package com.egon.msscbeerservice.beer.services;
+package com.egon.msscbeerservice.beer.services.impl;
 
 import com.egon.msscbeerservice.beer.helpers.BeerHelper;
 import com.egon.msscbeerservice.beer.repositories.BeerRepository;
+import com.egon.msscbeerservice.beer.services.GetOnHandBeerInventoryService;
+import com.egon.msscbeerservice.beer.services.impl.DeleteBeerServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

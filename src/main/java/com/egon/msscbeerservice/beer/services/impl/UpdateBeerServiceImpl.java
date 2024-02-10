@@ -1,8 +1,9 @@
-package com.egon.msscbeerservice.beer.services;
+package com.egon.msscbeerservice.beer.services.impl;
 
 import com.egon.msscbeerservice.beer.dtos.BeerDto;
 import com.egon.msscbeerservice.beer.mappers.BeerMapper;
 import com.egon.msscbeerservice.beer.repositories.BeerRepository;
+import com.egon.msscbeerservice.beer.services.UpdateBeerService;
 import com.egon.msscbeerservice.beer.utils.BeerUtils;
 import com.egon.msscbeerservice.shared.exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;

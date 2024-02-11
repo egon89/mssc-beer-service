@@ -19,6 +19,7 @@ import org.springframework.jms.support.converter.MessageType;
 public class JmsConfig {
 
   public static final String QUEUE_A = "queue_a";
+  public static final String BREWING_REQUEST_QUEUE = "brewing-request";
 
   @Bean
   public JmsListenerContainerFactory<?> myFactory(

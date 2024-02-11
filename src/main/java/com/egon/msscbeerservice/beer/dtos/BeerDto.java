@@ -42,6 +42,8 @@ public class BeerDto implements Serializable {
 
   private Integer quantityOnHand;
 
+  private Integer minOnHand;
+
   private OffsetDateTime createdAt;
 
   private OffsetDateTime updatedAt;

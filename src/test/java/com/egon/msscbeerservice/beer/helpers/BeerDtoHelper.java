@@ -32,6 +32,7 @@ public class BeerDtoHelper extends BeerHelper {
         .style(STYLE)
         .upc(UPC)
         .price(PRICE)
+        .minOnHand(MIN_ON_HAND)
         .createdAt(OffsetDateTime.of(CREATED_AT, ZoneOffset.UTC))
         .updatedAt(OffsetDateTime.of(UPDATED_AT, ZoneOffset.UTC));
   }

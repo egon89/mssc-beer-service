@@ -5,6 +5,8 @@ import com.egon.msscbeerservice.beer.mappers.BeerMapper;
 import com.egon.msscbeerservice.beer.repositories.BeerRepository;
 import com.egon.msscbeerservice.beer.services.CheckForLowInventory;
 import com.egon.msscbeerservice.config.JmsConfig;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,6 +27,7 @@ public class CheckForLowInventoryImpl implements CheckForLowInventory {
   private final BeerRepository beerRepository;
   private final BeerMapper beerMapper;
   private final JmsTemplate jmsTemplate;
+  private final ObjectMapper objectMapper;
 
   @Scheduled(fixedRate = 10, timeUnit = TimeUnit.MINUTES)
   @Override
@@ -35,11 +38,18 @@ public class CheckForLowInventoryImpl implements CheckForLowInventory {
     beerRepository.findAll().stream()
         .parallel()
         .map(entity -> beerMapper.toDto(entity, true))
+        .peek(beerDto -> log.info("Check inventory for beer {}. Local inventory: {}. Minimum required: {}.",
+            beerDto.getId(), beerDto.getQuantityOnHand(), beerDto.getMinOnHand()))
         .filter(beerDto -> beerDto.getQuantityOnHand() < beerDto.getMinOnHand())
         .forEach(beerDto -> {
-          log.info("Low local inventory for beer {}. Minimum required: {}. Local inventory: {}",
+          log.info("[!] Low local inventory for beer {}. Local inventory: {}. Minimum required: {}.",
               beerDto.getId(), beerDto.getQuantityOnHand(), beerDto.getMinOnHand());
-          jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE, BeerEventDto.create(beerDto));
+          try {
+            jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE,
+                objectMapper.writeValueAsString(BeerEventDto.create(beerDto)));
+          } catch (JsonProcessingException e) {
+            log.error("Error to send beer {} to queue {}", beerDto.getId(), JmsConfig.BREWING_REQUEST_QUEUE);
+          }
         });
     log.info("Check for low inventory job finished");
   }

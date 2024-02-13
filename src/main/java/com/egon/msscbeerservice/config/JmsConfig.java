@@ -20,6 +20,7 @@ public class JmsConfig {
 
   public static final String QUEUE_A = "queue_a";
   public static final String BREWING_REQUEST_QUEUE = "brewing-request";
+  public static final String NEW_INVENTORY_QUEUE = "new-inventory";
 
   @Bean
   public JmsListenerContainerFactory<?> myFactory(

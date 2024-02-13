@@ -5,8 +5,6 @@ import com.egon.msscbeerservice.beer.mappers.BeerMapper;
 import com.egon.msscbeerservice.beer.repositories.BeerRepository;
 import com.egon.msscbeerservice.beer.services.CheckForLowInventory;
 import com.egon.msscbeerservice.config.JmsConfig;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,14 +25,13 @@ public class CheckForLowInventoryImpl implements CheckForLowInventory {
   private final BeerRepository beerRepository;
   private final BeerMapper beerMapper;
   private final JmsTemplate jmsTemplate;
-  private final ObjectMapper objectMapper;
 
   @Scheduled(fixedRate = 10, timeUnit = TimeUnit.MINUTES)
   @Override
   public void execute() {
     if (Objects.isNull(initialJobs) || Boolean.FALSE.equals(initialJobs)) return;
 
-    log.info("Starting check for low inventory job");
+    log.debug("Starting check for low inventory job");
     beerRepository.findAll().stream()
         .parallel()
         .map(entity -> beerMapper.toDto(entity, true))
@@ -44,13 +41,9 @@ public class CheckForLowInventoryImpl implements CheckForLowInventory {
         .forEach(beerDto -> {
           log.info("[!] Low local inventory for beer {}. Local inventory: {}. Minimum required: {}.",
               beerDto.getId(), beerDto.getQuantityOnHand(), beerDto.getMinOnHand());
-          try {
-            jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE,
-                objectMapper.writeValueAsString(BeerEventDto.create(beerDto)));
-          } catch (JsonProcessingException e) {
-            log.error("Error to send beer {} to queue {}", beerDto.getId(), JmsConfig.BREWING_REQUEST_QUEUE);
-          }
+          jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE, BeerEventDto.create(beerDto));
+          log.debug("Beer {} sent to queue {}", beerDto.getId(), JmsConfig.BREWING_REQUEST_QUEUE);
         });
-    log.info("Check for low inventory job finished");
+    log.debug("Check for low inventory job finished");
   }
 }

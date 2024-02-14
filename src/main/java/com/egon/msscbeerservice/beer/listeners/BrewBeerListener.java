@@ -1,7 +1,7 @@
 package com.egon.msscbeerservice.beer.listeners;
 
-import com.egon.msscbeerservice.beer.dtos.events.BeerEventDto;
+import com.egon.common.events.dtos.LowInventoryBeerEventDto;
 
 public interface BrewBeerListener {
-  void listen(BeerEventDto eventDto);
+  void listen(LowInventoryBeerEventDto eventDto);
 }

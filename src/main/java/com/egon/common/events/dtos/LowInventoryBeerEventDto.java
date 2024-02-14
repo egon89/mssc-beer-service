@@ -1,7 +1,6 @@
-package com.egon.msscbeerservice.beer.dtos.events;
+package com.egon.common.events.dtos;
 
 import com.egon.msscbeerservice.beer.dtos.BeerDto;
-import com.egon.msscbeerservice.shared.dtos.EventDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,14 +11,14 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class BeerEventDto extends EventDto<BeerEventDto.LowInventoryBeerDto> {
+public class LowInventoryBeerEventDto extends EventDto<LowInventoryBeerEventDto.LowInventoryBeerDto> {
   @Builder
-  public BeerEventDto(LowInventoryBeerDto data) {
+  public LowInventoryBeerEventDto(LowInventoryBeerDto data) {
     super(data);
   }
 
-  public static BeerEventDto create(BeerDto beerDto) {
-    return BeerEventDto.builder()
+  public static LowInventoryBeerEventDto create(BeerDto beerDto) {
+    return LowInventoryBeerEventDto.builder()
         .data(new LowInventoryBeerDto(beerDto.getId(), beerDto.getQuantityOnHand(), beerDto.getMinOnHand()))
         .build();
   }

@@ -1,6 +1,5 @@
-package com.egon.msscbeerservice.beer.dtos.events;
+package com.egon.common.events.dtos;
 
-import com.egon.msscbeerservice.shared.dtos.EventDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

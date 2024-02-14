@@ -1,6 +1,6 @@
 package com.egon.msscbeerservice.beer.services.impl;
 
-import com.egon.msscbeerservice.beer.dtos.events.BeerEventDto;
+import com.egon.common.events.dtos.LowInventoryBeerEventDto;
 import com.egon.msscbeerservice.beer.mappers.BeerMapper;
 import com.egon.msscbeerservice.beer.repositories.BeerRepository;
 import com.egon.msscbeerservice.beer.services.CheckForLowInventory;
@@ -41,7 +41,7 @@ public class CheckForLowInventoryImpl implements CheckForLowInventory {
         .forEach(beerDto -> {
           log.info("[!] Low local inventory for beer {}. Local inventory: {}. Minimum required: {}.",
               beerDto.getId(), beerDto.getQuantityOnHand(), beerDto.getMinOnHand());
-          jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE, BeerEventDto.create(beerDto));
+          jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE, LowInventoryBeerEventDto.create(beerDto));
           log.debug("Beer {} sent to queue {}", beerDto.getId(), JmsConfig.BREWING_REQUEST_QUEUE);
         });
     log.debug("Check for low inventory job finished");

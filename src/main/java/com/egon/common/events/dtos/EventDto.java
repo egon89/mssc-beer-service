@@ -1,4 +1,4 @@
-package com.egon.msscbeerservice.shared.dtos;
+package com.egon.common.events.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -5,6 +5,7 @@ import com.egon.msscbeerservice.beer.services.GetOnHandBeerInventoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,14 +15,13 @@ import java.util.UUID;
 
 
 @Slf4j
+@Profile("!local-discovery")
 @Service
 @RequiredArgsConstructor
 public class GetOnHandBeerInventoryServiceImpl implements GetOnHandBeerInventoryService {
 
   @Value("${beer.inventory.service.host}")
   private String host;
-
-  private final static String INVENTORY_PATH = "/beers/{beerId}/inventory";
 
   private final RestTemplate restTemplate;
 

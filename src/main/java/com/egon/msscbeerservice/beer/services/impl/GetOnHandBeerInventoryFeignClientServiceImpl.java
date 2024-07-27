@@ -36,7 +36,7 @@ public class GetOnHandBeerInventoryFeignClientServiceImpl implements GetOnHandBe
             .stream()
             .mapToInt(BeerInventoryIntegrationResponseDto::quantityOnHand)
             .sum();
-    log.info("Quantity on hand for beer {}: {}", beerId, quantityOnHandTotal);
+    log.debug("Quantity on hand for beer {}: {}", beerId, quantityOnHandTotal);
 
     return quantityOnHandTotal;
   }

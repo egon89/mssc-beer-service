@@ -65,4 +65,12 @@
 			<version>${logstash-logback-encoder.version}</version>
 		</dependency>
 	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/egon89/mssc-brewery-bom</url>
+		</repository>
+	</distributionManagement>
 </project>
